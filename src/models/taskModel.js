@@ -16,9 +16,8 @@ const userSchema = new mongoose.Schema({
         default: "Pending"
     },
     creator: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User"
+        type: String,
+        required: true
     }
 }, { timestamps: true })
 
