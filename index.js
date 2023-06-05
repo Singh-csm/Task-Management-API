@@ -1,16 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const route = require("./routes/route")
+dotenv.config()
 const app = express();
 const PORT = process.env.PORT || 3000;
 const dotenv = require("dotenv")
-dotenv.config()
 const MONGO_URI = process.env.MONGO_URI;
 app.use(express.json());
 
 mongoose.set("strictQuery", false);
 mongoose.connect(MONGO_URI, {useNewUrlParser: true})
-.then(()=>console.log("MongoDB is Connected"))
+.then(()=>console.log("MongoDB is Connected..."))
 .catch(err=>console.log(err))
 app.use("/", route)
 
