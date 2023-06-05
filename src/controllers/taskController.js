@@ -20,4 +20,15 @@ const createTask = async function (req, res) {
     };
 };
 
+const viewAllTasks = async function (req, res) {
+    try {
+        const {currentPage} = req.params.page;
+        const allTasks = await taskModel.find({isDeleted: false}).skip(currentPage * 10).limit(10);
+        if (allTasks.length === 0) return res.status(404).send({status: false, messagae: "No more tasks found. You have viewed all tasks"});
+        res.status(200).send({status: true, data: allTasks});
+    } catch (error) {
+        res.status(500).send({ status: false, messagae: error.messagae });
+    };
+};
+
 module.exports = { createTask };
