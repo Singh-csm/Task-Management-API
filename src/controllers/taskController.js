@@ -13,8 +13,8 @@ const createTask = async function (req, res) {
             const taskCreated = await taskModel.findOneAndUpdate({ title: title }, { isDeleted: false }, { new: true });
             return res.status(201).send({ status: true, messagae: "Task created successfully", data: taskCreated });
         };
-        const taskCreated = await taskModel.findOneAndUpdate({ title: title }, { isDeleted: false }, { new: true });
-        return res.status(201).send({ status: true, messagae: "Task created successfully", data: taskCreated });
+        const taskCreated = await taskModel.create(data);
+        res.status(201).send({ status: true, messagae: "Task created successfully", data: taskCreated });
     } catch (error) {
         res.status(500).send({ status: false, messagae: error.messagae });
     };
