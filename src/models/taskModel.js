@@ -10,14 +10,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        enum: ["Processing", "Pending", "Completed"],
-        default: "Pending"
-    },
     creator: {
         type: String,
         required: true
+    },
+    user: {
+        type: String,
+        default: [String]
     }
 }, { timestamps: true })
 
